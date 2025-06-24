@@ -19,14 +19,21 @@ class FidelityProgramService
         LoggerInterface $logger
     )
     {
+        //salva a pontuacao no banco:
+
         $this->pointsRepository = $pointsRepository;
+
+        //calcular pontuacao para receber:
         $this->pointsCalculator = $pointsCalculator;
+
         $this->logger = $logger;
     }
 
     public function addPoints(Customer $customer, $value)
     {
-        $this->logger->log('Checking points for customer');
+        $this->logger->log('Checking points for customer'); 
+
+        //calcula a pontuacao:
         $pointsToAdd = $this->pointsCalculator->calculatePointsToReceive($value);
 
         if ($pointsToAdd > 0) {

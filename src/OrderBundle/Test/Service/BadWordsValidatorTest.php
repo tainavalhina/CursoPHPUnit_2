@@ -15,7 +15,9 @@ class BadWordsValidatorTest extends TestCase
     public function hasBadWords($badWordsList, $text, $foundBadWords)
     {
 
-        //createMock -> cria um objeto falso so para usar no teste
+        //stubs -> um stub cria um objeto falso, muito semelhante ao objeto real, 
+        //mas sem funcionalidade, retornando valores fixos para usar no teste
+        //
         $badWordsRepository = $this->createMock(BadWordsRepository::class);
 
         $badWordsRepository->method('findAllAsArray')

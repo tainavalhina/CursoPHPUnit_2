@@ -16,7 +16,15 @@ class FidelityProgramServiceTest extends TestCase
      */
     public function shouldSaveWhenReceivePoints()
     {
+        //stub vc cria objeto falso e diz o que ele deve retornar
+        //o mock tb tem essa caracteristica, mas tb é possivel fazer uma asserção dentro dele
+
+
+
+        //crie um mock da classe PointsRepository
         $pointsRepository = $this->createMock(PointsRepository::class);
+
+        //espero uma vez que o metodo save seja chamado
         $pointsRepository->expects($this->once())
             ->method('save');
 
@@ -55,7 +63,9 @@ class FidelityProgramServiceTest extends TestCase
      */
     public function shouldNotSaveWhenReceiveZeroPoints()
     {
-        $pointsRepository = $this->createMock(PointsRepository::class);
+
+        $pointsRepository = $this->createMock(PointsRepository::class); 
+        //eu espero que nunca seja chamado o metodo save
         $pointsRepository->expects($this->never())
             ->method('save');
 
